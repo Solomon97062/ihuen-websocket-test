@@ -28,14 +28,9 @@ wss.on('connection', (ws, req) => {
     if (veri) {
         var db = ihDB[uq.t]
         var rs = toJson(db);
-        // if (r == 'get') {
         if (uq.u != '') {
             ws.send(rs);
         }
-        // }
-        // if (r == 'add') {
-
-        // }
 
         ws.on('message', function incoming(data) {
             var d = JSON.parse(data);
