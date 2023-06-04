@@ -1,8 +1,9 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
-const HTTP_PORT = process.env.PORT || 443;
+import { createServer } from 'http';
 
-const wss = new WebSocketServer({ port: HTTP_PORT });
+const server = createServer();
+const wss = new WebSocketServer({ server });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
@@ -61,3 +62,7 @@ wss.on('connection', (ws, req) => {
         // ws.send('sucessfully connected to ihuen websocket');
     }
 });
+const port = 8080;
+server.listen(port, () => {
+    console.log(`WebSocket server is running on port ${port}`);
+  });
