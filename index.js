@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
-const HTTP_PORT = process.env.PORT || 8080;
+const HTTP_PORT = process.env.PORT || 443;
 
 const wss = new WebSocketServer({ port: HTTP_PORT });
 const ihDB = {
