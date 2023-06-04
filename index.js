@@ -62,7 +62,7 @@ wss.on('connection', (ws, req) => {
         // ws.send('sucessfully connected to ihuen websocket');
     }
 });
-const port = 3000;
+const port = 8000;
 server.listen(port, () => {
     console.log(`WebSocket server is running on port ${port}`);
   });
