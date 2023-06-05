@@ -3,9 +3,9 @@ import url from 'url';
 import { createServer } from 'http';
 
 const server = createServer();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 3000;
 
-const wss = new WebSocketServer({ server: server });
+const wss = new WebSocketServer({ server });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
