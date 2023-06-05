@@ -1,11 +1,11 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
-import { createServer } from 'http';
+import { createServer } from 'https';
 
 const server = createServer();
 const port = process.env.PORT || 3000;
 
-const wss = new WebSocketServer({ server });
+const wss = new WebSocketServer({ server: server });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
@@ -22,7 +22,7 @@ const ihDB = {
 };
 const token = "419";
 const print = (v) => console.log(v);
-const toJson = (v)=> JSON.stringify(v);
+const toJson = (v) => JSON.stringify(v);
 
 wss.on('connection', (ws, req) => {
     const uq = url.parse(req.url, true).query;
@@ -38,7 +38,7 @@ wss.on('connection', (ws, req) => {
 
         ws.on('message', function incoming(data) {
             var d = JSON.parse(data);
-            if(d['r'] == "set"){
+            if (d['r'] == "set") {
                 const dq = d['q'];
                 db.unshift(dq)
                 ws.send(toJson(db))
@@ -66,4 +66,4 @@ wss.on('connection', (ws, req) => {
 });
 server.listen(port, () => {
     console.log(`WebSocket server is running on port ${port}`);
-  });
+});
