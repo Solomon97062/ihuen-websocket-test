@@ -5,7 +5,7 @@ import { createServer } from 'http';
 const server = createServer();
 const port = process.env.PORT || 443;
 
-const wss = new WebSocketServer({ port: port });
+const wss = new WebSocketServer({ server: server });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
