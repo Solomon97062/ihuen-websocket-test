@@ -1,11 +1,11 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
-import { createServer } from 'https';
+// import { createServer } from 'https';
 
-const server = createServer();
+// const server = createServer();
 const port = process.env.PORT || 3000;
 
-const wss = new WebSocketServer({ server });
+const wss = new WebSocketServer({ port: port });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
@@ -64,6 +64,6 @@ wss.on('connection', (ws, req) => {
         // ws.send('sucessfully connected to ihuen websocket');
     }
 });
-server.listen(port, () => {
-    console.log(`WebSocket server is running on port ${port}`);
-});
+// server.listen(port, () => {
+//     console.log(`WebSocket server is running on port ${port}`);
+// });
