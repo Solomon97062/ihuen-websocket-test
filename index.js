@@ -5,7 +5,7 @@ import express from "express";
 
 const app = express();
 const server = createServer(app);
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 443;
 
 const wss = new WebSocketServer({ server });
 const ihDB = {
