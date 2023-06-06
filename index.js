@@ -1,13 +1,13 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
-import { createServer } from 'http';
-import express from "express";
+// import { createServer } from 'http';
+// import express from "express";
 
-const app = express();
-const server = createServer(app);
-const port = process.env.PORT || 443;
+// const app = express();
+// const server = createServer(app);
+const port = process.env.PORT || 8080;
 
-const wss = new WebSocketServer({ server });
+const wss = new WebSocketServer({ port });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
@@ -66,6 +66,6 @@ wss.on('connection', (ws, req) => {
         // ws.send('sucessfully connected to ihuen websocket');
     }
 });
-server.listen(port,'0.0.0.0', () => {
-    console.log(`WebSocket server is running on port ${port}`);
-  });
+// server.listen(port,'0.0.0.0', () => {
+//     console.log(`WebSocket server is running on port ${port}`);
+//   });
