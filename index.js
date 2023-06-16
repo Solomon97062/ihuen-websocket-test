@@ -4,7 +4,7 @@ import { WebSocketServer } from 'ws';
 import http from "http";
 
 
-const app = express();
+const app = express().use(express.json());
 
 
 app.get('/', (req, res) => {
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
         //     ws.send(JSON.stringify([{ "message": "Good connet!" }]))
         // });
     }//0242432092:0530635526
-    res.send("<p>Basic Examp...</p>");
+    res.send({op:"<p>Basic Examp...</p>"});
 });
 
 http.createServer(app).listen(8080, '0.0.0.0');
