@@ -1,22 +1,18 @@
+// content of index.js
+const http = require('http')
+const port = 3000
 
-import express from "express";
-import { WebSocketServer } from 'ws';
-import http from "http";
+const requestHandler = (request, response) => {
+  console.log(request.url)
+  response.end('Hello Node.js Server!')
+}
 
+const server = http.createServer(requestHandler)
 
-const app = express().use(express.json());
+server.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
 
-
-app.get('/', (req, res) => {
-    if (req.url == '/api') {
-        // const wss = new WebSocketServer({ server });
-        // wss.on('connection', (ws, req) => {
-        //     console.log('Incoming connection: %s', req.url);
-        //     ws.send(JSON.stringify([{ "message": "Good connet!" }]))
-        // });
-    }//0242432092:0530635526
-    res.send({op:"<p>Basic Examp...</p>"});
-});
-
-http.createServer(app).listen(8080, '0.0.0.0');
-
+  console.log(`server is listening on ${port}`)
+})
