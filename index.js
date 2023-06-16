@@ -23,7 +23,7 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
 
-const wss = new WebSocketServer({ port: 8000 });
+const wss = new WebSocketServer({ port: 3000 });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
