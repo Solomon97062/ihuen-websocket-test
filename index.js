@@ -4,7 +4,6 @@ import { WebSocketServer } from 'ws';
 
 
 const app = express();
-const server = app.listen(3000);
 
 
 app.get('/', (req, res) => {
@@ -18,4 +17,5 @@ app.get('/', (req, res) => {
     res.send("<p>Basic Examp...</p>");
 });
 
+app.listen(3000);
 
