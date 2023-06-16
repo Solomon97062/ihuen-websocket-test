@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
             ws.send(JSON.stringify([{ "message": "Good connet!" }]))
         });
     }//0242432092:0530635526
-    res.send("Basic Examp...");
+    res.send("<p>Basic Examp...</p>");
 
 });
 
