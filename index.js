@@ -7,7 +7,7 @@ wss.on('connection', function (ws) {
   })
 
   setInterval(
-    () => ws.send(`${new Date()}`),
+    () => ws.send(JSON.stringify([{"dateTime":`${new Date()}`}])),
     1000
   )
 })
