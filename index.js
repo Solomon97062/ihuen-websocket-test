@@ -12,9 +12,13 @@ const toJson = (v) => JSON.stringify(v);
 
 wss.on('connection', (ws, req) => {
   print('A client just connected: %s', req)
+  wss.on("close", function(closemsg) {
+    print("Client got disconnected: %s", closemsg)
+  })
   ws.on("message", function(msg) {
     print("Received message from client: %s",msg)
     wss.clients.forEach(client => {
+      if(client != ws && client.readyState == ws.OPEN)
       client.send("Someone said: "+ msg)
     });
   })
