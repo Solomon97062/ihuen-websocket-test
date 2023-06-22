@@ -13,7 +13,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/ws',(req,res)=>{
-  const ws = new WebSocketServer({server})
+  const ws = new WebSocketServer({port: 40510})
 
   ws.on("connection",(stream) => {
     console.log('someone connected! %s', stream);
