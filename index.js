@@ -1,4 +1,4 @@
-import { WebSocketServer } from 'ws';
+import {  WebSocket,WebSocketServer } from 'ws';
 import url from 'url';
 // var NoSQL = require('nosql');
 const PORT = 5000;
@@ -18,7 +18,7 @@ wss.on('connection', (ws, req) => {
   ws.on("message", function(msg) {
     print("Received message from client: %s",msg)
     wss.clients.forEach(client => {
-      if(client != ws && client.readyState == ws.OPEN)
+      if(client != ws && client.readyState == WebSocket.OPEN)
       client.send("Someone said: "+ msg)
     });
   })
