@@ -1,7 +1,7 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
 
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: 5000 });
 const ihDB = {
     "buddies": [{
         "userid": "xrsolomon",
@@ -57,6 +57,6 @@ wss.on('connection', (ws, req) => {
             }
             console.log('received: %s', data);
         });
-        // ws.send('sucessfully connected to ihuen websocket');
+        ws.send('sucessfully connected to ihuen websocket');
     }
 });
