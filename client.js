@@ -1,9 +1,10 @@
 import WebSocket from "ws";
 
-const ws = new WebSocket("wss://happy-fox-tam.cyclic.app/",
+const ws = new WebSocket('wss://ihuen-websock.onrender.com/',
     {
         headers: {
             "user-agent": "Mozilla",
+
         },
     },
 );
