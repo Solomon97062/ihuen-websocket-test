@@ -11,7 +11,7 @@ function print() {
 const toJson = (v) => JSON.stringify(v);
 
 wss.on('connection', (ws, req) => {
-  print('A client just connected')
+  print('A client just connected: %s', req)
   ws.on("message", function(msg) {
     print("Received message from client: %s",msg)
     wss.clients.forEach(client => {
