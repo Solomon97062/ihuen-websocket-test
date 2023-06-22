@@ -1,63 +1,21 @@
 import { WebSocketServer } from 'ws';
 import url from 'url';
+// var NoSQL = require('nosql');
 const PORT = 5000;
-const wss = new WebSocketServer({  port:  5000});
-const ihDB = {
-  "buddies": [{
-    "xrsbmesgs": [],
-    "userid": "xrsolomon",
-    "bType": "single",
-    "bio": "comp.",
-    "name": "Paa Solo",
-    "imageUrl": "https://image.com",
-    "state": "color",
-    "seenWhen": "yesterday",
-    "favDate": "2671:T8y28",
-    "bkList": ["bkList"],
-    "country": "Ghana",
-  }], "shorts": []
-};
-const token = "419";
-const print = (v) => console.log(v);
+const wss = new WebSocketServer({ port: PORT });
+// var db = NoSQL.load('/db/ihuendb.nosql');
+
+function print() {
+  return console.log(...arguments);
+}
 const toJson = (v) => JSON.stringify(v);
 
 wss.on('connection', (ws, req) => {
-  const uq = url.parse(req.url, true).query;
-  const r = uq.r;
-  const veri = uq.k == token;
-  print(req.url);
-  if (veri) {
-    var db = ihDB[uq.t]
-    var rs = toJson(db);
-    if (uq.u != '') {
-      ws.send(rs);
-    }
-
-    ws.on('message', function incoming(data) {
-      var d = JSON.parse(data);
-      if (d['r'] == "set") {
-        const dq = d['q'];
-        db.unshift(dq)
-        ws.send(toJson(db))
-      }
-      if (d['r'] == 'update') {
-        const dq = d['q'];
-        for (const x in db) {
-          if (Object.hasOwnProperty.call(db, x)) {
-            for (const y in dq) {
-              if (Object.hasOwnProperty.call(dq, y)) {
-                if (uq.u == db[x]["userid"]) {
-                  if (db[x][y] == dq[y]) continue;
-                  db[x][y] = dq[y];
-                }
-              }
-            }
-          }
-        }
-        ws.send(toJson(db))
-      }
-      console.log('received: %s', data);
+  print('A client just connected')
+  ws.on("message", function(msg) {
+    print("Received message from client: %s",msg)
+    wss.clients.forEach(client => {
+      client.send("Someone said: "+ msg)
     });
-    ws.send('sucessfully connected to ihuen websocket');
-  } else ws.send(JSON.stringify([{ "message": "You are unauthenticated!" }]));
+  })
 });
