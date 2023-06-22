@@ -11,7 +11,7 @@ function print() {
 const toJson = (v) => JSON.stringify(v);
 
 wss.on('connection', (ws, req) => {
-  print('A client just connected: %s', req)
+  print('A client just connected')
   wss.on("close", function(closemsg) {
     print("Client got disconnected: %s", closemsg)
   })
