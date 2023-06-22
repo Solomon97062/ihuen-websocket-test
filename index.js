@@ -4,7 +4,7 @@ import { WebSocketServer } from "ws";
 
 const app = express();
 
-const server = app.listen(3000,()=>{console.log('listening on port 3000')}) 
+const server = app.listen(3000,'0.0.0.0',()=>{console.log('listening on port 3000')}) 
 
 
 
